@@ -1,8 +1,9 @@
 from collections import Counter
 from pathlib import Path
 
+
 # Parsing
-def parse_data(data: str):
+def parse_data(data: str) -> tuple[list[int], list[int]]:
     left_list = []
     right_list = []
     for line in data.split("\n"):
@@ -23,7 +24,7 @@ def get_similarity_score(left_list: list[int], right_list: list[int]) -> int:
     return sum(left * counter[left] for left in left_list)
 
 
-def main():
+def main() -> None:
     # Parsing
     data = Path("input").read_text(encoding="utf-8")
     left_list, right_list = parse_data(data)
