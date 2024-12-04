@@ -5,16 +5,15 @@ from pathlib import Path
 # Part 1
 def part_1(data: str) -> int:
     numbers = re.findall(r"mul\((\d+),(\d+)\)", data)
-    return sum(int(number[0]) * int(number[1]) for number in numbers)
+    return sum(int(x) * int(y) for x, y in numbers)
 
 
 # Part 2
 def part_2(data: str) -> int:
     data = re.sub(r"don't\(\).*?do\(\)", "", data, flags=re.DOTALL)
-    # Remove all string after the last don't()
-    # data = re.sub(r"don't\(\).*?$", "", data)
+    data = re.sub(r"don't\(\).*?$", "", data)
     numbers = re.findall(r"mul\((\d+),(\d+)\)", data)
-    return sum(int(number[0]) * int(number[1]) for number in numbers)
+    return sum(int(x) * int(y) for x, y in numbers)
 
 
 def main() -> None:
