@@ -2,11 +2,10 @@ from pathlib import Path
 
 
 def parse_data(data: str) -> list[list[str]]:
-    results = [list(line) for line in data.splitlines()]
-    return results
+    return [list(line) for line in data.splitlines()]
 
 
-def part_1(data: list[str]) -> bool:
+def part_1(data: list[list[str]]) -> int:
     results = 0
     for y, data_row in enumerate(data):
         for x, data_cell in enumerate(data_row):
@@ -44,7 +43,7 @@ def part_1(data: list[str]) -> bool:
     return results
 
 
-def part_2(data: list[str]) -> bool:
+def part_2(data: list[list[str]]) -> int:
     results = 0
     for y, data_row in enumerate(data):
         for x, data_cell in enumerate(data_row):
@@ -74,7 +73,6 @@ def main() -> None:
     # Parsing
     data = Path("input").read_text(encoding="utf-8")
     data = parse_data(data)
-    print(data)
 
     # Part 1
     print(f"Part 1: {part_1(data)}")
