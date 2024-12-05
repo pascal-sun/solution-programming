@@ -47,9 +47,7 @@ def part_2(rules: Rules, updates: Updates) -> int:
             is_correct = False
             page_index = tmp.index(is_correctly_ordered(rules, tmp)[1])
             # Switch page with previous one
-            tmp_page = tmp[page_index]
-            tmp[page_index] = tmp[page_index - 1]
-            tmp[page_index - 1] = tmp_page
+            tmp[page_index], tmp[page_index - 1] = tmp[page_index - 1], tmp[page_index]
         if not is_correct:
             result += tmp[len(tmp) // 2]
     return result
@@ -59,7 +57,7 @@ def main() -> None:
     data = Path("input").read_text(encoding="utf-8")
     rules, updates = parse_data(data)
     print(f"Part 1: {part_1(rules, updates)}")
-    print(f"Part 1: {part_2(rules, updates)}")
+    print(f"Part 2: {part_2(rules, updates)}")
 
 
 if __name__ == "__main__":
