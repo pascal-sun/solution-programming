@@ -23,7 +23,10 @@ def get_calibration_result(data: EQUATIONS, operations: list) -> int:
                 continue
             new_results = set()
             for result in results:
-                new_results.update(operation(result, number) for operation in operations)
+                for operation in operations:
+                    new_result = operation(result, number)
+                    if new_result <= test_value:
+                        new_results.add(new_result)
             results = new_results
         if test_value in results:
             count += test_value
@@ -41,7 +44,7 @@ def part_2(data: EQUATIONS) -> int:
 def main() -> None:
     data = Path("input").read_text(encoding="utf-8")
     data = parse_data(data)
-    print(f"Part 1: {part_1(data)}")
+    # print(f"Part 1: {part_1(data)}")
     print(f"Part 2: {part_2(data)}")
 
 
